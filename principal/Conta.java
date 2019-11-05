@@ -13,6 +13,8 @@ public class Conta {
     private int numero;
     private double saldo;
     private double limite;
+    ////relaciona outras classes, utilizando-as como atributos.
+    private Pessoa dono;
 
     public Conta(int numero, double saldo, double limite) {
         this.numero = numero;
@@ -22,6 +24,15 @@ public class Conta {
 
     public Conta() {
     }
+    
+    public Pessoa getDono() {
+        return dono;
+    }
+
+    public void setDono(Pessoa dono) {
+        this.dono = dono;
+    }
+    
 
     public int getNumero() {
         return numero;
@@ -73,8 +84,9 @@ public class Conta {
         
         System.out.println("Operação de Transferência: - R$ " + transferir);
         contaDestino.depositar(transferir);
-        System.out.println("Conta do Destinatário: " + contaDestino.getNumero());
+        System.out.print("Número da Conta Destinatária: " + contaDestino.getNumero());
+        System.out.println(": " + contaDestino.getDono().getNomeCompleto());
     }
-    
+
     
 }

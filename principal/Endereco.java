@@ -5,6 +5,8 @@
  */
 package modelo.principal;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author aluno
@@ -15,6 +17,8 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String cep;
+    //permite atribuir mais de um morador por endereço.
+    private ArrayList<Pessoa> morador = new ArrayList<>();
 
     public Endereco(String rua, String numero, String cidade, String estado, String cep) {
         this.rua = rua;
@@ -81,5 +85,21 @@ public class Endereco {
             System.out.println("endereço não encontrado!");
         }
     }
+    /**
+     * atribui os objetos da classe Pessoa ao objeto da classe Endereço.
+     * este método permite atribuir mais de um objeto ao mesmo endereço.
+     * @param obj 
+     */
+    public void addMorador (Pessoa obj){
+        morador.add(obj);
+    }
     
+    public void getMorador () {
+        int i;
+        System.out.println("\nENDEREÇO: " + this.getRua() + ", Nº "+ this.getNumero());
+        for (i = 0; i < morador.size(); i++) {
+            System.out.println("\tMorador nº " +(i+1) + morador.get(i).getNomeCompleto());
+        }
+    }
+
 }
