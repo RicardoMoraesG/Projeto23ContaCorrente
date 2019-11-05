@@ -1,0 +1,62 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo.principal;
+
+/**
+ *
+ * @author Ricardo de Moraes Gonçalves
+ */
+public class ProjetoContaCorrente {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    
+        //instanciando conta que será parâmetro do objeto pessoa.
+        Conta conta1 = new Conta(9000,1200.49,1000.00);
+        //instanciando endereço que será parâmetro do objeto pessoa.
+        Endereco endereco1 = new Endereco("Rua Joaquim Antonio","696","Promissão","SP","16370-000");
+        //passando os objetos instanciados anteriormente como parâmetros.
+        Pessoa pessoa1 = new Pessoa("Priscila","Moreno","12345678910",conta1,endereco1);
+        //testando os métodos especiais
+        System.out.println("Nome Completo: " + pessoa1.getNomeCompleto() );
+        pessoa1.validarCpf(pessoa1.getCpf());
+        //testando o método da classe Endereço através do parâmetro da classe Pessoa.
+        pessoa1.getEnderecoPessoal().getLocalizacaoByCep("16370-000");
+        
+        //testando o deposito 
+        System.out.println("Saldo Anterior: R$ "+pessoa1.getContaCorrente().getSaldo());
+        pessoa1.getContaCorrente().depositar(500);
+        System.out.println("Saldo Posterior: R$ "+pessoa1.getContaCorrente().getSaldo());
+        
+        
+        
+        //testando um segundo objeto.    
+        Conta conta2 = new Conta(5000, 200.00, 2000.00);
+        Endereco endereco2 = new Endereco("Rua Ernesto Monte", "91","Promissão", "SP", "16370-000");
+        Pessoa pessoa2 = new Pessoa("Eliana", "Rodelli", "963852741",conta2,endereco2);
+        System.out.println("\nNome completo" +pessoa2.getNomeCompleto() );
+        //cpf digitado errado para teste.
+        pessoa2.validarCpf(pessoa2.getCpf());
+        //digitado cep errado para teste.
+        pessoa2.getEnderecoPessoal().getLocalizacaoByCep("10000-000");
+        
+        System.out.println("Saldo Anterior: R$ " + pessoa2.getContaCorrente().getSaldo());
+        pessoa2.getContaCorrente().sacar(1000);
+        System.out.println("Saldo Posterior: R$ " + pessoa2.getContaCorrente().getSaldo() + " Titular: " + pessoa2.getNome());
+        
+        //testando transferência
+        System.out.println("");
+        System.out.println("Saldo Remetente: R$ " + pessoa1.getContaCorrente().getSaldo() + " Titular " + pessoa1.getNomeCompleto());
+        pessoa1.getContaCorrente().transferir(1000, conta2);
+        System.out.println("Saldo Remetente: R$ " + pessoa1.getContaCorrente().getSaldo() + " Titular " + pessoa1.getNomeCompleto());
+        System.out.println("Saldo Destinatario: R$ " +pessoa2.getContaCorrente().getSaldo() + " Titular: " + pessoa2.getNomeCompleto());
+        
+  
+    }
+}
