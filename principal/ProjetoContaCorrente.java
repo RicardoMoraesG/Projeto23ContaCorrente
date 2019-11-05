@@ -60,7 +60,8 @@ public class ProjetoContaCorrente {
         System.out.println("Saldo Destinatario: R$ " +pessoa2.getContaCorrente().getSaldo() + " Titular: " + pessoa2.getNomeCompleto());
         
         //TESTE MORADOR NO MESMO ENDEREÇO
-        Pessoa pessoa3 = new Pessoa("Vera", "Lúcia Moreno", "98765432100",conta1,endereco1);
+        Conta conta3 = new Conta();
+        Pessoa pessoa3 = new Pessoa("Vera", "Lúcia Moreno", "98765432100",conta3,endereco1);
         endereco1.addMorador(pessoa3);
         endereco1.getMorador();
         
